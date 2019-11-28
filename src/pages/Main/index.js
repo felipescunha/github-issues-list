@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import api from '../../services/api';
 
 import Container from '../../components/Container';
-import { Form, InputForm, SubmitButton, List, FaTrashButton, ErrorMessage } from './styles';
+import { Form, InputForm, SubmitButton, List, FaTrashButton } from './styles';
 
 export default class Main extends Component {
   state = {
@@ -46,10 +46,10 @@ export default class Main extends Component {
       this.setState({ loading: true });
       
       const { newRepo, repositories } = this.state;
-      
-      const response = await api.get(`/repos/${newRepo}`)
 
       if (newRepo === '') throw new Error("Invalid Repository");
+      
+      const response = await api.get(`/repos/${newRepo}`)
 
       const hasRepo = repositories.find(r => r.name === response.data.full_name);
 
@@ -65,11 +65,10 @@ export default class Main extends Component {
         loading: false,
       });
 
-    }catch (error) {
-      this.setState({
-        error: true,
+    }catch (e) {
+      this.setState({        
         errorRepo: true,
-        errMsg: error.response ? toast.error(error.response.data.message) : toast.error(error.message),
+        mestrinho: e.response ? toast.error(e.response.data.message) : toast.error(e.message),
       });
     } finally {
       this.setState({ loading: false });
@@ -81,10 +80,12 @@ export default class Main extends Component {
   }
 
   render() {
-    const { newRepo, repositories, loading, error, errMsg, errorRepo } = this.state;
+    const { newRepo, repositories, loading, errorRepo } = this.state;
 
     return (
+      
       <Container>
+        <ToastContainer autoClose={3000} />
         <h1>
           <FaGitAlt />
           Repositórios
@@ -106,7 +107,6 @@ export default class Main extends Component {
             )}
           </SubmitButton>
         </Form>
-        <ToastContainer />
         <List>
           {repositories.map(repository => (
             <li key={repository.name}>

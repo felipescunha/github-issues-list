@@ -100,3 +100,72 @@ export const IssuesList = styled.ul`
     }
   }
 `;
+
+
+export const IssuesFilter = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 15px;
+
+  button {
+    width: 80px;
+    border-radius: 4px;
+    outline: 0;
+    border: 0;
+    padding: 8px;
+    margin: 0 0.25rem;
+
+
+    &:nth-child(${props => props.active + 1}) {
+      background: #555555;
+      color: white;
+    }
+  }
+`;
+
+// export const AllButton = styled.button.attrs(props => ({
+//   type: 'onClick',
+//   value:props.value,
+// }))``;
+
+export const PageNavigation = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; 
+
+  button {
+    margin-top: 20px;
+    width: 60px;
+    border-radius: 2px;
+    background: #eee;
+    padding: 2px;
+
+    :focus {
+      background: #555555;
+      color: #FFF;
+      font-style:oblique;
+    }
+  }
+`;
+
+
+export const PageButtons = styled.button`
+  
+  outline: 0;
+  border: 0;
+  margin-top: 15px;
+  border-radius: 2px;
+  width: 80px; 
+  padding: 2px;
+  transition: opacity 0.25s ease-out;
+  
+  &:disabled {
+      opacity: 0.50;
+      cursor: not-allowed;
+    }
+
+`;
+

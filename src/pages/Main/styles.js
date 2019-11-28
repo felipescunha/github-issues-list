@@ -93,14 +93,6 @@ export const FaTrashButton = styled.button.attrs(props => ({
 
 `;
 
-const shake = keyframes`
-  0%, 75%%{ transform: translate(-10px); }
-  25%, 100% { transform: translate(10px); }
-  50% { transform: translate(0px);
-   }
- }
-`;
-
 export const InputForm = styled.input.attrs(props => ({
   type: 'text',
   placeholder: 'Adicionar repositório',
