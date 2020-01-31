@@ -1,4 +1,4 @@
-# Github .::Issues list::.
+# Github Issues List
 Rocketseat bootcamp gostack 9.0 challenge 05
 
 <p align="center">
