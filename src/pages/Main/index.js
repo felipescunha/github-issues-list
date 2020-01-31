@@ -69,9 +69,11 @@ export default class Main extends Component {
       this.setState({        
         errorRepo: true,
         mestrinho: e.response ? toast.error(e.response.data.message) : toast.error(e.message),
+        newRepo:'',
       });
     } finally {
       this.setState({ loading: false });
+      
     }
   };
 
